@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KeHE Sustainability | Impact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="impact">
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a href="index.html" class="brand">KeHE Sustainability</a>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a class="active" href="impact.html">Impact</a>
+          <a href="strategy.html">Strategy</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="transparency.html">Transparency</a>
+          <a href="visual.html">Visual</a>
+          <a href="community.html">Community</a>
+          <a href="closing.html">Closing</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel" id="impact-dashboard">
+        <div class="panel-inner">
+          <p class="eyebrow">Impact Dashboard</p>
+          <h2>Measuring Real Progress</h2>
+
+          <div class="metrics-grid metrics-primary">
+            <article class="metric-card metric-large">
+              <p class="metric-label">Estimated Gallons of Diesel Reduced</p>
+              <p class="metric-value" id="dieselReduced">1,102,000</p>
+            </article>
+            <article class="metric-card metric-large">
+              <p class="metric-label">Estimated Transportation Cost Reduction</p>
+              <p class="metric-value" id="costReduction">$4,628,000</p>
+            </article>
+            <article class="metric-card metric-large">
+              <p class="metric-label">Estimated CO₂ Emissions Reduced</p>
+              <p class="metric-value" id="co2Reduced">11,190 metric tons</p>
+            </article>
+          </div>
+
+          <div class="metrics-grid metrics-secondary">
+            <article class="metric-card metric-small">
+              <p class="metric-label">Duplicate Trips Eliminated</p>
+              <p class="metric-value" id="tripsEliminated">7,850</p>
+            </article>
+            <article class="metric-card metric-small">
+              <p class="metric-label">Community Deliveries Enabled</p>
+              <p class="metric-value" id="communityDeliveries">12,400</p>
+            </article>
+            <article class="metric-card metric-small">
+              <p class="metric-label">Local Jobs Supported</p>
+              <p class="metric-value" id="jobsSupported">1,560</p>
+            </article>
+          </div>
+
+          <p class="note">Estimates are based on published transportation benchmarks and operational modeling assumptions.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
