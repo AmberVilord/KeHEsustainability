@@ -114,7 +114,35 @@ function initImpactSimulator() {
   updateSimulator();
 }
 
+function initDpaasAnimation() {
+  const wrap = document.querySelector('.dpaas-anim');
+  const btn = document.getElementById('toggle');
+  const badge = document.getElementById('badge');
+
+  if (!wrap || !btn || !badge) {
+    return;
+  }
+
+  let on = false;
+
+  function setState() {
+    wrap.classList.toggle('platoon', on);
+    badge.textContent = on
+      ? 'Match found ✓ Forming dynamic platoon… (reduced drag)'
+      : 'Scanning for platoon partners…';
+    btn.textContent = on ? 'Simulate Split' : 'Simulate Match';
+  }
+
+  btn.addEventListener('click', () => {
+    on = !on;
+    setState();
+  });
+
+  setState();
+}
+
 activateTab('fleet');
 initMetrics();
 initImpactSimulator();
+initDpaasAnimation();
 ensureCompetitionFooter();

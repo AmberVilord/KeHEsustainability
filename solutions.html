@@ -91,8 +91,8 @@
             </article>
           </div>
 
-          <section class="simulator-block" aria-label="Unique add-on idea">
-            <h3>Unique Add-On Idea: Dynamic Platooning-as-a-Service (DPaaS)</h3>
+          <section class="simulator-block" aria-label="Game Changer">
+            <h3>Game Changer: Dynamic Platooning-as-a-Service (DPaaS)</h3>
             <p>
               In addition to immediate retrofit improvements, KeHE could pilot dynamic cross-fleet highway platooning partnerships
               that allow trucks to form temporary coordinated convoys, reducing aerodynamic drag and fuel consumption while requiring
@@ -107,6 +107,23 @@
               <li>physics-backed: trailing trucks commonly show measurable fuel benefits in pilot programs</li>
               <li>KeHE fit: predictable interstate corridors and scheduled windows already create match opportunities</li>
             </ul>
+            <section class="dpaas-anim" aria-label="Dynamic Platooning animation">
+              <div class="hud">
+                <div class="badge" id="badge">Scanning for platoon partners…</div>
+                <button class="btn" id="toggle" type="button">Simulate Match</button>
+              </div>
+
+              <div class="road">
+                <div class="lane"></div>
+                <div class="lane lane2"></div>
+
+                <div class="truck lead" aria-hidden="true"></div>
+                <div class="truck mid" aria-hidden="true"></div>
+                <div class="truck tail" aria-hidden="true"></div>
+
+                <div class="wind" aria-hidden="true"></div>
+              </div>
+            </section>
             <p class="takeaway">Think: Waze-style convoy coordination for freight efficiency.</p>
           </section>
         </div>
