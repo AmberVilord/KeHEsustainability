@@ -47,6 +47,10 @@
             </article>
           </div>
 
+          <p class="assumption-line">
+            Estimates shown use conservative industry efficiency ranges and publicly reported transportation benchmarks.
+          </p>
+
           <div class="metrics-grid metrics-secondary">
             <article class="metric-card metric-small">
               <p class="metric-label">Duplicate Trips Eliminated</p>
@@ -63,6 +67,66 @@
           </div>
 
           <p class="note">Estimates are based on published transportation benchmarks and operational modeling assumptions.</p>
+
+          <section class="simulator-block" aria-label="Impact simulator">
+            <h3>Impact Simulator</h3>
+            <p class="simulator-subtitle">Operational Modeling for Sustainable Distribution</p>
+            <p class="benchmark-label">Modeled Using Current U.S. Freight Benchmarks (2024–2026)</p>
+
+            <div class="sim-grid">
+              <label class="sim-field" for="simFleetSize">
+                <span>Fleet Size</span>
+                <input id="simFleetSize" type="range" min="50" max="5000" step="50" value="600" />
+                <strong id="simFleetSizeValue">600</strong>
+              </label>
+
+              <label class="sim-field" for="simAnnualMiles">
+                <span>Average Annual Miles per Truck</span>
+                <input id="simAnnualMiles" type="range" min="20000" max="150000" step="1000" value="80000" />
+                <strong id="simAnnualMilesValue">80,000</strong>
+              </label>
+
+              <label class="sim-field" for="simMpg">
+                <span>Average MPG</span>
+                <input id="simMpg" type="range" min="4" max="10" step="0.1" value="6.5" />
+                <strong id="simMpgValue">6.5</strong>
+              </label>
+
+              <label class="sim-field" for="simDieselPrice">
+                <span>Diesel Price (USD)</span>
+                <input id="simDieselPrice" type="range" min="2.5" max="6" step="0.05" value="4" />
+                <strong id="simDieselPriceValue">$4.00</strong>
+              </label>
+            </div>
+
+            <div class="sim-toggles">
+              <label><input id="simEfficiencyToggle" type="checkbox" checked /> Enable Efficiency Upgrades</label>
+              <label><input id="simRailToggle" type="checkbox" /> Shift Long-Haul to Rail</label>
+            </div>
+
+            <div class="sim-outputs">
+              <article>
+                <p>Estimated Gallons Saved</p>
+                <strong id="simGallonsSaved">—</strong>
+              </article>
+              <article>
+                <p>Estimated Fuel Cost Reduction</p>
+                <strong id="simCostSaved">—</strong>
+              </article>
+              <article>
+                <p>Estimated CO₂ Reduction</p>
+                <strong id="simCo2Saved">—</strong>
+              </article>
+            </div>
+
+            <div class="methodology">
+              <h4>Methodology</h4>
+              <p>
+                This simulator illustrates potential operational outcomes based on typical heavy-freight performance ranges; actual
+                results vary by fleet configuration, route structure, and operating conditions.
+              </p>
+            </div>
+          </section>
         </div>
       </section>
     </main>
