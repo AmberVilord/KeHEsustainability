@@ -13,12 +13,9 @@ function ensureCompetitionFooter() {
 }
 
 const metricTargets = [
-  { id: 'dieselReduced', value: 1102000, formatter: value => `${value.toLocaleString('en-US')}` },
-  { id: 'costReduction', value: 4628000, formatter: value => `$${value.toLocaleString('en-US')}` },
-  { id: 'co2Reduced', value: 11190, formatter: value => `${value.toLocaleString('en-US')} metric tons` },
-  { id: 'tripsEliminated', value: 7850, formatter: value => `${value.toLocaleString('en-US')}` },
-  { id: 'communityDeliveries', value: 12400, formatter: value => `${value.toLocaleString('en-US')}` },
-  { id: 'jobsSupported', value: 1560, formatter: value => `${value.toLocaleString('en-US')}` }
+  { id: 'savingsPerTruck', value: 6000, formatter: value => `$${value.toLocaleString('en-US')}` },
+  { id: 'fleetSavings', value: 3000000, formatter: value => `$${value.toLocaleString('en-US')}` },
+  { id: 'fleetCo2Reduced', value: 7500, formatter: value => `${value.toLocaleString('en-US')} metric tons` }
 ];
 
 function activateTab(tabName) {
@@ -71,19 +68,17 @@ function initMetrics() {
 
 function initImpactSimulator() {
   const fleetInput = document.getElementById('simFleetSize');
-  const annualMilesInput = document.getElementById('simAnnualMiles');
-  const mpgInput = document.getElementById('simMpg');
+  const gallonsSavedPerTruckInput = document.getElementById('simAnnualMiles');
+  const co2PerGallonInput = document.getElementById('simMpg');
   const dieselPriceInput = document.getElementById('simDieselPrice');
-  const efficiencyToggle = document.getElementById('simEfficiencyToggle');
-  const railToggle = document.getElementById('simRailToggle');
 
-  if (!fleetInput || !annualMilesInput || !mpgInput || !dieselPriceInput || !efficiencyToggle || !railToggle) {
+  if (!fleetInput || !gallonsSavedPerTruckInput || !co2PerGallonInput || !dieselPriceInput) {
     return;
   }
 
   const fleetValue = document.getElementById('simFleetSizeValue');
-  const annualMilesValue = document.getElementById('simAnnualMilesValue');
-  const mpgValue = document.getElementById('simMpgValue');
+  const gallonsSavedPerTruckValue = document.getElementById('simAnnualMilesValue');
+  const co2PerGallonValue = document.getElementById('simMpgValue');
   const dieselPriceValue = document.getElementById('simDieselPriceValue');
 
   const gallonsSavedOutput = document.getElementById('simGallonsSaved');
@@ -94,40 +89,26 @@ function initImpactSimulator() {
 
   function updateSimulator() {
     const fleet = Number(fleetInput.value);
-    const miles = Number(annualMilesInput.value);
-    const mpg = Number(mpgInput.value);
+    const gallonsSavedPerTruck = Number(gallonsSavedPerTruckInput.value);
+    const co2PerGallon = Number(co2PerGallonInput.value);
     const dieselPrice = Number(dieselPriceInput.value);
 
     fleetValue.textContent = formatWhole(fleet);
-    annualMilesValue.textContent = formatWhole(miles);
-    mpgValue.textContent = mpg.toFixed(1);
+    gallonsSavedPerTruckValue.textContent = formatWhole(gallonsSavedPerTruck);
+    co2PerGallonValue.textContent = co2PerGallon.toFixed(1);
     dieselPriceValue.textContent = `$${dieselPrice.toFixed(2)}`;
 
-    const baselineGallons = (fleet * miles) / mpg;
-    let savingsRate = 0.08;
-
-    if (efficiencyToggle.checked) {
-      savingsRate += 0.1;
-    }
-    if (railToggle.checked) {
-      savingsRate += 0.12;
-    }
-
-    const gallonsSaved = baselineGallons * savingsRate;
+    const gallonsSaved = fleet * gallonsSavedPerTruck;
     const costSaved = gallonsSaved * dieselPrice;
-    const co2MetricTons = (gallonsSaved * 22.38) / 2204.62;
+    const co2MetricTons = (gallonsSaved * co2PerGallon) / 2204.62;
 
     gallonsSavedOutput.textContent = `${formatWhole(gallonsSaved)} gallons`;
     costSavedOutput.textContent = `$${formatWhole(costSaved)}`;
     co2SavedOutput.textContent = `${formatWhole(co2MetricTons)} metric tons CO₂`;
   }
 
-  [fleetInput, annualMilesInput, mpgInput, dieselPriceInput].forEach(input => {
+  [fleetInput, gallonsSavedPerTruckInput, co2PerGallonInput, dieselPriceInput].forEach(input => {
     input.addEventListener('input', updateSimulator);
-  });
-
-  [efficiencyToggle, railToggle].forEach(toggle => {
-    toggle.addEventListener('change', updateSimulator);
   });
 
   updateSimulator();

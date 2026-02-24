@@ -18,6 +18,7 @@
           <a class="active" href="impact.html">Impact</a>
           <a href="strategy.html">Strategy</a>
           <a href="solutions.html">Solutions</a>
+          <a href="circular.html">Circular Ops</a>
           <a href="transparency.html">Transparency</a>
           <a href="visual.html">Visual</a>
           <a href="community.html">Community</a>
@@ -29,49 +30,50 @@
     <main>
       <section class="panel" id="impact-dashboard">
         <div class="panel-inner">
-          <p class="eyebrow">Impact Dashboard</p>
-          <h2>Measuring Real Progress</h2>
+          <p class="eyebrow">Savings</p>
+          <h2>Back-of-Napkin Financials and Emissions Impact</h2>
+          <p>
+            Conservative modeling shows that idle reduction plus aerodynamic upgrades can save about 1,500 gallons of diesel per
+            truck annually.
+          </p>
 
           <div class="metrics-grid metrics-primary">
             <article class="metric-card metric-large">
-              <p class="metric-label">Estimated Gallons of Diesel Reduced</p>
-              <p class="metric-value" id="dieselReduced">1,102,000</p>
+              <p class="metric-label">Annual Savings per Truck</p>
+              <p class="metric-value" id="savingsPerTruck">$6,000</p>
             </article>
             <article class="metric-card metric-large">
-              <p class="metric-label">Estimated Transportation Cost Reduction</p>
-              <p class="metric-value" id="costReduction">$4,628,000</p>
+              <p class="metric-label">500-Truck Fleet Annual Fuel Savings</p>
+              <p class="metric-value" id="fleetSavings">$3,000,000</p>
             </article>
             <article class="metric-card metric-large">
-              <p class="metric-label">Estimated CO₂ Emissions Reduced</p>
-              <p class="metric-value" id="co2Reduced">11,190 metric tons</p>
+              <p class="metric-label">Fleet CO₂ Reduction (Annual)</p>
+              <p class="metric-value" id="fleetCo2Reduced">7,500 metric tons</p>
             </article>
           </div>
 
           <p class="assumption-line">
-            Estimates shown use conservative industry efficiency ranges and publicly reported transportation benchmarks.
+            Assumptions: 1,500 gallons saved per truck annually, diesel at approximately $4 per gallon, and 22.4 pounds CO₂ per
+            gallon of diesel.
           </p>
 
-          <div class="metrics-grid metrics-secondary">
-            <article class="metric-card metric-small">
-              <p class="metric-label">Duplicate Trips Eliminated</p>
-              <p class="metric-value" id="tripsEliminated">7,850</p>
-            </article>
-            <article class="metric-card metric-small">
-              <p class="metric-label">Community Deliveries Enabled</p>
-              <p class="metric-value" id="communityDeliveries">12,400</p>
-            </article>
-            <article class="metric-card metric-small">
-              <p class="metric-label">Local Jobs Supported</p>
-              <p class="metric-value" id="jobsSupported">1,560</p>
-            </article>
-          </div>
+          <p class="note">These figures are intentionally conservative and based on current freight efficiency ranges.</p>
 
-          <p class="note">Estimates are based on published transportation benchmarks and operational modeling assumptions.</p>
+          <section class="simulator-block" aria-label="DPaaS impact add-on">
+            <h3>DPaaS Add-On Impact (Napkin Estimate)</h3>
+            <p>
+              If approximately 30% of long-haul miles can platoon and trailing savings average about 6%, total fleet fuel reduction
+              from the DPaaS layer is roughly 1.5–2%.
+            </p>
+            <p class="assumption-line">
+              While percentage gains appear modest, this can still represent hundreds of thousands of gallons for large fleets with
+              minimal new physical infrastructure.
+            </p>
+          </section>
 
           <section class="simulator-block" aria-label="Impact simulator">
             <h3>Impact Simulator</h3>
-            <p class="simulator-subtitle">Operational Modeling for Sustainable Distribution</p>
-            <p class="benchmark-label">Modeled Using Current U.S. Freight Benchmarks (2024–2026)</p>
+            <p class="simulator-subtitle">Adjust core assumptions and estimate annual fleet impact.</p>
 
             <div class="sim-grid">
               <label class="sim-field" for="simFleetSize">
@@ -81,15 +83,15 @@
               </label>
 
               <label class="sim-field" for="simAnnualMiles">
-                <span>Average Annual Miles per Truck</span>
-                <input id="simAnnualMiles" type="range" min="20000" max="150000" step="1000" value="80000" />
-                <strong id="simAnnualMilesValue">80,000</strong>
+                <span>Gallons Saved per Truck (Annual)</span>
+                <input id="simAnnualMiles" type="range" min="500" max="3000" step="50" value="1500" />
+                <strong id="simAnnualMilesValue">1,500</strong>
               </label>
 
               <label class="sim-field" for="simMpg">
-                <span>Average MPG</span>
-                <input id="simMpg" type="range" min="4" max="10" step="0.1" value="6.5" />
-                <strong id="simMpgValue">6.5</strong>
+                <span>CO₂ lbs per Gallon</span>
+                <input id="simMpg" type="range" min="20" max="25" step="0.1" value="22.4" />
+                <strong id="simMpgValue">22.4</strong>
               </label>
 
               <label class="sim-field" for="simDieselPrice">
@@ -97,11 +99,6 @@
                 <input id="simDieselPrice" type="range" min="2.5" max="6" step="0.05" value="4" />
                 <strong id="simDieselPriceValue">$4.00</strong>
               </label>
-            </div>
-
-            <div class="sim-toggles">
-              <label><input id="simEfficiencyToggle" type="checkbox" checked /> Enable Efficiency Upgrades</label>
-              <label><input id="simRailToggle" type="checkbox" /> Shift Long-Haul to Rail</label>
             </div>
 
             <div class="sim-outputs">
@@ -117,14 +114,6 @@
                 <p>Estimated CO₂ Reduction</p>
                 <strong id="simCo2Saved">—</strong>
               </article>
-            </div>
-
-            <div class="methodology">
-              <h4>Methodology</h4>
-              <p>
-                This simulator illustrates potential operational outcomes based on typical heavy-freight performance ranges; actual
-                results vary by fleet configuration, route structure, and operating conditions.
-              </p>
             </div>
           </section>
         </div>
